@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreyas | Personal Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}body{ font-family:'Poppins',sans-serif; background:#050816; color:white; overflow-x:hidden; }
+
+body::-webkit-scrollbar{ width:10px; }
+
+body::-webkit-scrollbar-thumb{ background:linear-gradient(#00f7ff,#6a5cff); border-radius:20px; }
+
+header{ width:100%; position:fixed; top:0; left:0; z-index:1000; backdrop-filter:blur(14px); background:rgba(0,0,0,0.45); border-bottom:1px solid rgba(255,255,255,0.1); }
+
+nav{ max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:18px 35px; }
+
+.logo{ font-size:2rem; font-weight:800; background:linear-gradient(90deg,#00f7ff,#7b61ff,#ff66c4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+nav ul{ display:flex; gap:22px; list-style:none; }
+
+nav a{ color:white; text-decoration:none; font-weight:600; transition:0.3s; }
+
+nav a:hover{ color:#00f7ff; }
+
+.hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:140px 8% 80px; gap:60px; flex-wrap:wrap; background: radial-gradient(circle at top left,rgba(0,247,255,0.25),transparent 30%), radial-gradient(circle at bottom right,rgba(123,97,255,0.25),transparent 30%), #050816; }
+
+.hero-text{ flex:1; min-width:300px; }
+
+.hero-text h1{ font-size:5rem; line-height:1; margin-bottom:20px; }
+
+.hero-text span{ background:linear-gradient(90deg,#00f7ff,#8d6bff,#ff7fd1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+.hero-text p{ color:#c7d1ff; font-size:1.1rem; line-height:1.8; max-width:650px; }
+
+.btns{ margin-top:35px; display:flex; gap:20px; flex-wrap:wrap; }
+
+.btn{ padding:15px 30px; border-radius:50px; text-decoration:none; font-weight:700; transition:0.35s; }
+
+.primary{ background:linear-gradient(90deg,#00f7ff,#6f5cff); color:white; }
+
+.secondary{ border:2px solid #00f7ff; color:#00f7ff; }
+
+.btn:hover{ transform:translateY(-5px) scale(1.03); box-shadow:0 10px 25px rgba(0,247,255,0.3); }
+
+.hero-image{ flex:1; display:flex; justify-content:center; min-width:300px; }
+
+.hero-image img{ width:360px; height:360px; object-fit:cover; border-radius:40px; border:5px solid rgba(255,255,255,0.15); box-shadow:0 0 45px rgba(0,247,255,0.4); }
+
+section{ padding:110px 8%; }
+
+.section-title{ text-align:center; margin-bottom:60px; }
+
+.section-title h2{ font-size:3rem; margin-bottom:10px; }
+
+.section-title p{ color:#b8c0ff; }
+
+.about-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+
+.card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:28px; padding:30px; transition:0.4s; backdrop-filter:blur(12px); }
+
+.card:hover{ transform:translateY(-10px); box-shadow:0 15px 40px rgba(0,247,255,0.18); }
+
+.card h3{ margin-bottom:15px; font-size:1.5rem; color:#00f7ff; }
+
+.card p{ color:#d3dbff; line-height:1.8; }
+
+.gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; }
+
+.gallery-item{ cursor:pointer; position:relative; overflow:hidden; border-radius:25px; border:2px solid rgba(255,255,255,0.08); }
+
+.gallery-item img{ width:100%; height:380px; object-fit:cover; object-position:center top; object-fit:cover; transition:0.5s; }
+
+.gallery-item:hover img{ transform:scale(1.08); }
+
+.overlay{ position:absolute; pointer-events:none; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.9),transparent); display:flex; align-items:flex-end; padding:20px; }
+
+.overlay h3{ font-size:1.3rem; }
+
+.timeline{ position:relative; max-width:1000px; margin:auto; }
+
+.timeline::before{ content:''; position:absolute; left:50%; width:4px; height:100%; background:linear-gradient(#00f7ff,#7b61ff); transform:translateX(-50%); }
+
+.timeline-item{ width:50%; padding:20px 40px; position:relative; }
+
+.timeline-item:nth-child(odd){ left:0; text-align:right; }
+
+.timeline-item:nth-child(even){ left:50%; }
+
+.timeline-box{ background:rgba(255,255,255,0.05); border-radius:25px; padding:25px; border:1px solid rgba(255,255,255,0.08); }
+
+.timeline-box h3{ color:#00f7ff; margin-bottom:10px; }
+
+.timeline-box p{ color:#d2dcff; line-height:1.8; }
+
+.contact-box{ max-width:850px; margin:auto; text-align:center; background:rgba(255,255,255,0.05); padding:50px; border-radius:30px; border:1px solid rgba(255,255,255,0.08); }
+
+.contact-box h3{ font-size:2rem; margin-bottom:20px; }
+
+.contact-box p{ color:#d4dcff; line-height:1.9; }
+
+footer{ text-align:center; padding:30px; border-top:1px solid rgba(255,255,255,0.08); color:#cbd5ff; }
+
+@media(max-width:900px){
+
+.hero-text h1{ font-size:3.5rem; }
+
+.timeline::before{ left:20px; }
+
+.timeline-item{ width:100%; padding-left:70px; padding-right:10px; }
+
+.timeline-item:nth-child(odd), .timeline-item:nth-child(even){ left:0; text-align:left; }
+
+nav ul{ gap:14px; font-size:0.85rem; }
+
+.hero-image img{ width:290px; height:290px; } } </style>
+
+</head>
+<body><header>
+<nav>
+<div class="logo">Shreyas</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#journey">Journey</a></li>
+<li><a href="#school">School</a></li>
+<li><a href="#ayodhya">Ayodhya</a></li>
+<li><a href="#temple">Temple</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header><section class="hero" id="home">
+<div class="hero-text">
+<h1>Hello, I'm <span>Shreyas</span></h1>
+<p>
+A passionate student, achiever, school council member, and technology enthusiast. This website presents my journey, achievements, family moments, spiritual visits, and memorable experiences from school and life.
+</p>
+<div class="btns">
+<a href="#gallery" class="btn primary">Explore Gallery</a>
+<a href="#journey" class="btn secondary">My Journey</a>
+</div>
+</div><div class="hero-image">
+<img src="your-photo-1.jpg" alt="Shreyas">
+</div>
+</section><section id="about">
+<div class="section-title">
+<h2>About Me</h2>
+<p>Student • Leader • Achiever • Creative Thinker</p>
+</div><div class="about-grid">
+<div class="card">
+<h3>Who Am I?</h3>
+<p>
+My name is Shreyas Chaturvedi. I am 14 years old and currently studying in Class 9H at CMS Gomti Nagar 1 Campus, Lucknow. I am a dedicated student who loves learning, creativity, leadership, technology, and innovation. I enjoy participating in school activities and building creative digital ideas.
+</p>
+</div><div class="card">
+<h3>Achievements</h3>
+<p>
+I was awarded Student of the Year in the Junior Section at City Montessori School. I also served as the Tech Head in my school council team, where I contributed through leadership, digital creativity, teamwork, and technology-based ideas. My journey reflects hard work, discipline, confidence, and consistency.
+</p>
+</div><div class="card">
+<h3>Interests</h3>
+<p>
+I deeply enjoy coding, web development, futuristic UI designing, technology projects, educational creativity, photography, leadership activities, and making visually beautiful digital experiences. I am always excited to learn advanced concepts and create innovative digital projects.
+</p>
+</div>
+</div><div class="about-grid" style="margin-top:30px;">
+<div class="card">
+<h3>Quick Facts</h3>
+<p>
+• Age: 14 Years<br>
+• School: CMS Gomti Nagar 1 Campus, Lucknow<br>
+• Class & Section: 9H<br>
+• Role: Tech Head in School Council Team<br>
+• Interests: Coding, Technology, Leadership, UI Designing, Creativity, Photography & Innovation
+</p>
+</div>
+<div class="card">
+<h3>My Family</h3>
+<p>
+My father is Amit Chaturvedi and my mother is Priti Chaturvedi. My sister, Shraddha Chaturvedi, is also a part of CMS Education. My family has always supported and encouraged me in academics, leadership, creativity, and personal growth.
+</p>
+</div>
+</div>
+</section><section id="journey">
+<div class="section-title">
+<h2>My Journey</h2>
+<p>Important milestones and memorable moments</p>
+</div><div class="timeline"><div class="timeline-item">
+<div class="timeline-box">
+<h3>School Leadership</h3>
+<p>
+Being a part of the school council helped me improve leadership, teamwork, discipline, and communication skills.
+</p>
+</div>
+</div><div class="timeline-item">
+<div class="timeline-box">
+<h3>Student of the Year</h3>
+<p>
+Receiving the Student of the Year award was one of the proudest achievements of my academic life.
+</p>
+</div>
+</div><div class="timeline-item">
+<div class="timeline-box">
+<h3>Divine Seminar</h3>
+<p>
+Participating in the Divine Seminar and Report Card Distribution ceremony became a memorable experience of recognition and celebration.
+</p>
+</div>
+</div><div class="timeline-item">
+<div class="timeline-box">
+<h3>Spiritual Visits</h3>
+<p>
+Visits to Ayodhya and Hanuman Setu Mandir gave peaceful and spiritual experiences with family.
+</p>
+</div>
+</div></div>
+</section><section id="school">
+<style>
+.gallery-item a{
+display:block;
+width:100%;
+height:100%;
+position:relative;
+z-index:2;
+text-decoration:none;
+}
+</style>
+<div class="section-title">
+<h2>School Memories</h2>
+<p>Moments from CMS and school activities</p>
+</div><div class="gallery-grid"><div class="gallery-item">
+<a href="award-photo.jpg" target="_blank"><img src="award-photo.jpg" alt="Award"></a>
+<div class="overlay">
+<h3>Student of the Year Award</h3>
+</div>
+</div><div class="gallery-item">
+<a href="divine-seminar.jpg" target="_blank"><img src="divine-seminar.jpg" alt="Seminar"></a>
+<div class="overlay">
+<h3>Divine Seminar Ceremony</h3>
+</div>
+</div><div class="gallery-item">
+<a href="council-photo.jpg" target="_blank"><img src="council-photo.jpg" alt="Council" style="object-position:right center;"></a>
+<div class="overlay">
+<h3>School Council Members</h3>
+</div>
+</div><div class="gallery-item">
+<a href="farewell-photo.jpg" target="_blank"><img src="farewell-photo.jpg" alt="Farewell"></a>
+<div class="overlay">
+<h3>School Farewell Memories</h3>
+</div>
+</div></div>
+</section><section id="fruitshow">
+<div class="section-title">
+<h2>Regional Fruit, Vegetable & Flower Show</h2>
+<p>Raj Bhawan, Lucknow</p>
+</div><div class="gallery-grid"><div class="gallery-item">
+<a href="fruit-show-1.jpg" target="_blank"><img src="fruit-show-1.jpg" alt="Fruit Show"></a>
+<div class="overlay">
+<h3>Raj Bhawan Flower Show</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-2.jpg" target="_blank"><img src="fruit-show-2.jpg" alt="Vegetable Show"></a>
+<div class="overlay">
+<h3>Regional Fruit & Vegetable Exhibition</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-3.jpg" target="_blank"><img src="fruit-show-3.jpg" alt="Flower Show"></a>
+<div class="overlay">
+<h3>Creative Floral Display</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-4.jpg" target="_blank"><img src="fruit-show-4.jpg" alt="Raj Bhawan Event"></a>
+<div class="overlay">
+<h3>Raj Bhawan Event Memories</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-5.jpg" target="_blank"><img src="fruit-show-5.jpg" alt="Lucknow Show"></a>
+<div class="overlay">
+<h3>Lucknow Exhibition Visit</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-6.jpg" target="_blank"><img src="fruit-show-6.jpg" alt="Decorative Exhibition"></a>
+<div class="overlay">
+<h3>Decorative Nature Exhibition</h3>
+</div>
+</div><div class="gallery-item">
+<a href="fruit-show-7.jpg" target="_blank"><img src="fruit-show-7.jpg" alt="Flower Festival"></a>
+<div class="overlay">
+<h3>Regional Flower Festival</h3>
+</div>
+</div></div>
+</section><section id="ayodhya">
+<div class="section-title">
+<h2>Ayodhya Memories</h2>
+<p>Beautiful family moments from Ayodhya</p>
+</div><div class="gallery-grid">
+<div class="gallery-item">
+<a href="ayodhya-family.jpg" target="_blank"><img src="ayodhya-family.jpg" alt="Ayodhya"></a>
+<div class="overlay">
+<h3>Family at Ayodhya</h3>
+</div>
+</div>
+</div>
+</section><section id="temple">
+<div class="section-title">
+<h2>Hanuman Setu Mandir</h2>
+<p>Spiritual and peaceful moments from Lucknow</p>
+</div><div class="gallery-grid">
+<div class="gallery-item">
+<img src="mandir-photo.jpg" alt="Mandir">
+<div class="overlay">
+<h3>Hanuman Setu Mandir</h3>
+</div>
+</div><div class="gallery-item">
+<img src="mandir-family.jpg" alt="Temple Family">
+<div class="overlay">
+<h3>Temple Visit with Family</h3>
+</div>
+</div>
+</div>
+</section><section id="gallery">
+<div class="section-title">
+<h2>Photo Gallery</h2>
+<p>Collection of my favourite memories</p>
+</div><div class="gallery-grid"><div class="gallery-item">
+<a href="living-room.jpg" target="_blank"><img src="living-room.jpg" alt="Traditional Dress"></a>
+<div class="overlay">
+<h3>Traditional Look</h3>
+</div>
+</div><div class="gallery-item">
+<img src="maze-photo.png" alt="Creative">
+<div class="overlay">
+<h3>Creative Neon Design</h3>
+</div>
+</div><div class="gallery-item">
+<img src="award2.jpg" alt="Achievement">
+<div class="overlay">
+<h3>Achievement Moment</h3>
+</div>
+</div><div class="gallery-item">
+<img src="group-photo.jpg" alt="Group">
+<div class="overlay">
+<h3>Friends & Team</h3>
+</div>
+</div></div>
+</section><section id="contact">
+<div class="section-title">
+<h2>Contact</h2>
+<p>Thank you for visiting my portfolio website</p>
+</div><div class="contact-box">
+<h3>Connect With Me</h3>
+<p>
+This website represents my achievements, school life, spiritual journeys, leadership experiences, and memorable family moments. It is designed with a modern futuristic theme using HTML, CSS, and responsive layouts.
+<br><br>
+📧 Email: shreyas.cms.lko@gmail.com
+</p>
+</div>
+</section><footer>
+© 2026 Shreyas Chaturvedi Portfolio Website • CMS Gomti Nagar 1 Campus, Lucknow • Crafted with creativity, leadership, and passion for technology.
+</footer><script>
+const cards = document.querySelectorAll('.card,.gallery-item,.timeline-box');
+
+window.addEventListener('scroll',()=>{
+    const trigger = window.innerHeight * 0.85;
+
+    cards.forEach(card=>{
+        const top = card.getBoundingClientRect().top;
+
+        if(top < trigger){
+            card.style.opacity='1';
+            card.style.transform='translateY(0px)';
+        }
+    });
+});
+
+cards.forEach(card=>{
+    card.style.opacity='0';
+    card.style.transform='translateY(60px)';
+    card.style.transition='0.8s';
+});
+</script></body>
+</html>
