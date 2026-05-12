@@ -1,388 +1,935 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shreyas | Personal Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     scroll-behavior:smooth;
-}body{ font-family:'Poppins',sans-serif; background:#050816; color:white; overflow-x:hidden; }
+}
 
-body::-webkit-scrollbar{ width:10px; }
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
 
-body::-webkit-scrollbar-thumb{ background:linear-gradient(#00f7ff,#6a5cff); border-radius:20px; }
+/* =========================
+SCROLLBAR
+========================= */
 
-header{ width:100%; position:fixed; top:0; left:0; z-index:1000; backdrop-filter:blur(14px); background:rgba(0,0,0,0.45); border-bottom:1px solid rgba(255,255,255,0.1); }
+body::-webkit-scrollbar{
+    width:10px;
+}
 
-nav{ max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:18px 35px; }
+body::-webkit-scrollbar-thumb{
+    background:linear-gradient(#00f7ff,#6a5cff);
+    border-radius:20px;
+}
 
-.logo{ font-size:2rem; font-weight:800; background:linear-gradient(90deg,#00f7ff,#7b61ff,#ff66c4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+/* =========================
+AURORA WAVES
+========================= */
 
-nav ul{ display:flex; gap:22px; list-style:none; }
+.aurora{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(0,247,255,0.18),transparent 30%),
+    radial-gradient(circle at 80% 30%,rgba(123,97,255,0.18),transparent 35%),
+    radial-gradient(circle at 50% 80%,rgba(255,102,196,0.16),transparent 35%);
+    animation:auroraMove 10s infinite alternate ease-in-out;
+}
 
-nav a{ color:white; text-decoration:none; font-weight:600; transition:0.3s; }
+@keyframes auroraMove{
+    from{
+        transform:translate(-20px,-20px);
+    }
+    to{
+        transform:translate(20px,20px);
+    }
+}
 
-nav a:hover{ color:#00f7ff; }
+/* =========================
+NEON NAVBAR
+========================= */
 
-.hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:140px 8% 80px; gap:60px; flex-wrap:wrap; background: radial-gradient(circle at top left,rgba(0,247,255,0.25),transparent 30%), radial-gradient(circle at bottom right,rgba(123,97,255,0.25),transparent 30%), #050816; }
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    backdrop-filter:blur(16px);
+    background:rgba(0,0,0,0.35);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 0 25px rgba(0,247,255,0.15);
+    animation:navGlow 4s infinite alternate;
+}
 
-.hero-text{ flex:1; min-width:300px; }
+@keyframes navGlow{
+    from{
+        box-shadow:0 0 15px rgba(0,247,255,0.15);
+    }
+    to{
+        box-shadow:0 0 35px rgba(123,97,255,0.35);
+    }
+}
 
-.hero-text h1{ font-size:5rem; line-height:1; margin-bottom:20px; }
+nav{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 35px;
+}
 
-.hero-text span{ background:linear-gradient(90deg,#00f7ff,#8d6bff,#ff7fd1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.logo{
+    font-size:2rem;
+    font-weight:800;
+    background:linear-gradient(90deg,#00f7ff,#7b61ff,#ff66c4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-.hero-text p{ color:#c7d1ff; font-size:1.1rem; line-height:1.8; max-width:650px; }
+nav ul{
+    display:flex;
+    gap:22px;
+    list-style:none;
+}
 
-.btns{ margin-top:35px; display:flex; gap:20px; flex-wrap:wrap; }
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
 
-.btn{ padding:15px 30px; border-radius:50px; text-decoration:none; font-weight:700; transition:0.35s; }
+nav a:hover{
+    color:#00f7ff;
+    text-shadow:0 0 15px #00f7ff;
+}
 
-.primary{ background:linear-gradient(90deg,#00f7ff,#6f5cff); color:white; }
+/* =========================
+HERO
+========================= */
 
-.secondary{ border:2px solid #00f7ff; color:#00f7ff; }
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:140px 8% 80px;
+    gap:60px;
+    flex-wrap:wrap;
+    position:relative;
+    overflow:hidden;
+}
 
-.btn:hover{ transform:translateY(-5px) scale(1.03); box-shadow:0 10px 25px rgba(0,247,255,0.3); }
+.hero::before,
+.hero::after{
+    content:"🌸";
+    position:absolute;
+    font-size:5rem;
+    opacity:0.4;
+    animation:rotateFlower 8s linear infinite;
+}
 
-.hero-image{ flex:1; display:flex; justify-content:center; min-width:300px; }
+.hero::before{
+    top:30px;
+    left:30px;
+}
 
-.hero-image img{ width:360px; height:360px; object-fit:cover; border-radius:40px; border:5px solid rgba(255,255,255,0.15); box-shadow:0 0 45px rgba(0,247,255,0.4); }
+.hero::after{
+    bottom:30px;
+    right:30px;
+}
 
-section{ padding:110px 8%; }
+@keyframes rotateFlower{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
 
-.section-title{ text-align:center; margin-bottom:60px; }
+.hero-text{
+    flex:1;
+    min-width:300px;
+    z-index:2;
+}
 
-.section-title h2{ font-size:3rem; margin-bottom:10px; }
+.typing-text{
+    font-size:5rem;
+    line-height:1.1;
+    overflow:hidden;
+    white-space:nowrap;
+    border-right:4px solid #00f7ff;
+    width:0;
+    animation:
+    typing 4s steps(22,end) forwards,
+    blink .7s infinite;
+}
 
-.section-title p{ color:#b8c0ff; }
+@keyframes typing{
+    from{
+        width:0;
+    }
+    to{
+        width:100%;
+    }
+}
 
-.about-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
 
-.card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:28px; padding:30px; transition:0.4s; backdrop-filter:blur(12px); }
+.hero-text p{
+    color:#c7d1ff;
+    font-size:1.1rem;
+    line-height:1.8;
+    max-width:650px;
+    margin-top:25px;
+}
 
-.card:hover{ transform:translateY(-10px); box-shadow:0 15px 40px rgba(0,247,255,0.18); }
+.btns{
+    margin-top:35px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
 
-.card h3{ margin-bottom:15px; font-size:1.5rem; color:#00f7ff; }
+.btn{
+    padding:15px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    transition:0.35s;
+}
 
-.card p{ color:#d3dbff; line-height:1.8; }
+.primary{
+    background:linear-gradient(90deg,#00f7ff,#6f5cff);
+    color:white;
+}
 
-.gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; }
+.secondary{
+    border:2px solid #00f7ff;
+    color:#00f7ff;
+}
 
-.gallery-item{ cursor:pointer; position:relative; overflow:hidden; border-radius:25px; border:2px solid rgba(255,255,255,0.08); }
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 10px 25px rgba(0,247,255,0.3);
+}
 
-.gallery-item img{ width:100%; height:380px; object-fit:cover; object-position:center top; object-fit:cover; transition:0.5s; }
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    min-width:300px;
+}
 
-.gallery-item:hover img{ transform:scale(1.08); }
+.hero-image img{
+    width:360px;
+    height:360px;
+    object-fit:cover;
+    border-radius:40px;
+    border:5px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 45px rgba(0,247,255,0.4);
+    transition:0.5s;
+}
 
-.overlay{ position:absolute; pointer-events:none; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.9),transparent); display:flex; align-items:flex-end; padding:20px; }
+.hero-image img:hover{
+    transform:scale(1.05) rotate(2deg);
+}
 
-.overlay h3{ font-size:1.3rem; }
+/* =========================
+SECTIONS
+========================= */
 
-.timeline{ position:relative; max-width:1000px; margin:auto; }
+section{
+    padding:110px 8%;
+    animation:fadeSection 1s ease;
+}
 
-.timeline::before{ content:''; position:absolute; left:50%; width:4px; height:100%; background:linear-gradient(#00f7ff,#7b61ff); transform:translateX(-50%); }
+@keyframes fadeSection{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-.timeline-item{ width:50%; padding:20px 40px; position:relative; }
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
 
-.timeline-item:nth-child(odd){ left:0; text-align:right; }
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:10px;
+}
 
-.timeline-item:nth-child(even){ left:50%; }
+.section-title p{
+    color:#b8c0ff;
+}
 
-.timeline-box{ background:rgba(255,255,255,0.05); border-radius:25px; padding:25px; border:1px solid rgba(255,255,255,0.08); }
+/* =========================
+CARDS
+========================= */
 
-.timeline-box h3{ color:#00f7ff; margin-bottom:10px; }
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
 
-.timeline-box p{ color:#d2dcff; line-height:1.8; }
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    padding:30px;
+    transition:0.4s;
+    backdrop-filter:blur(12px);
+    transform-style:preserve-3d;
+    perspective:1000px;
+}
 
-.contact-box{ max-width:850px; margin:auto; text-align:center; background:rgba(255,255,255,0.05); padding:50px; border-radius:30px; border:1px solid rgba(255,255,255,0.08); }
+.card:hover{
+    box-shadow:0 15px 40px rgba(0,247,255,0.2);
+}
 
-.contact-box h3{ font-size:2rem; margin-bottom:20px; }
+.card h3{
+    margin-bottom:15px;
+    font-size:1.5rem;
+    color:#00f7ff;
+}
 
-.contact-box p{ color:#d4dcff; line-height:1.9; }
+.card p{
+    color:#d3dbff;
+    line-height:1.8;
+}
 
-footer{ text-align:center; padding:30px; border-top:1px solid rgba(255,255,255,0.08); color:#cbd5ff; }
+/* =========================
+COUNTERS
+========================= */
+
+.counter-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+    margin-top:50px;
+}
+
+.counter{
+    background:rgba(255,255,255,0.05);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.counter h2{
+    font-size:3rem;
+    color:#00f7ff;
+}
+
+/* =========================
+SKILLS
+========================= */
+
+.skills{
+    margin-top:40px;
+}
+
+.skill{
+    margin-bottom:25px;
+}
+
+.skill-name{
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.skill-bar{
+    width:100%;
+    height:14px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    overflow:hidden;
+}
+
+.skill-fill{
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00f7ff,#7b61ff,#ff66c4);
+    width:0;
+    animation:fillBar 3s forwards;
+}
+
+@keyframes fillBar{
+    to{
+        width:var(--width);
+    }
+}
+
+/* =========================
+BADGES
+========================= */
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:40px;
+}
+
+.badge{
+    padding:12px 24px;
+    border-radius:40px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 0 20px rgba(0,247,255,0.18);
+    transition:0.4s;
+}
+
+.badge:hover{
+    transform:translateY(-5px) scale(1.05);
+}
+
+/* =========================
+GALLERY
+========================= */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+    border:2px solid rgba(255,255,255,0.08);
+    transform-style:preserve-3d;
+}
+
+.gallery-item img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+}
+
+.overlay h3{
+    font-size:1.3rem;
+}
+
+/* =========================
+MOUSE LIGHT
+========================= */
+
+.cursor-light{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(0,247,255,0.22),
+    transparent 70%);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:-1;
+}
+
+/* =========================
+PARTICLES
+========================= */
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:white;
+    opacity:0.7;
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh) scale(1);
+        opacity:0;
+    }
+}
+
+/* =========================
+STARS
+========================= */
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.2;
+        transform:scale(1);
+    }
+    to{
+        opacity:1;
+        transform:scale(2);
+    }
+}
+
+/* =========================
+MUSIC BUTTON
+========================= */
+
+.music-btn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:none;
+    cursor:pointer;
+    z-index:10000;
+    font-size:1.5rem;
+    background:linear-gradient(45deg,#00f7ff,#7b61ff);
+    color:white;
+    box-shadow:0 0 25px rgba(0,247,255,0.4);
+}
 
 @media(max-width:900px){
 
-.hero-text h1{ font-size:3.5rem; }
+.typing-text{
+    font-size:3rem;
+}
 
-.timeline::before{ left:20px; }
+nav ul{
+    gap:12px;
+    font-size:0.8rem;
+}
 
-.timeline-item{ width:100%; padding-left:70px; padding-right:10px; }
+.hero-image img{
+    width:280px;
+    height:280px;
+}
 
-.timeline-item:nth-child(odd), .timeline-item:nth-child(even){ left:0; text-align:left; }
+}
 
-nav ul{ gap:14px; font-size:0.85rem; }
-
-.hero-image img{ width:290px; height:290px; } } </style>
-
+</style>
 </head>
-<body><header>
+
+<body>
+
+<div class="aurora"></div>
+<div class="cursor-light"></div>
+
+<header>
+
 <nav>
+
 <div class="logo">Shreyas</div>
+
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
-<li><a href="#journey">Journey</a></li>
-<li><a href="#school">School</a></li>
-<li><a href="#ayodhya">Ayodhya</a></li>
-<li><a href="#temple">Temple</a></li>
 <li><a href="#gallery">Gallery</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
+
 </nav>
-</header><section class="hero" id="home">
+
+</header>
+
+<section class="hero" id="home">
+
 <div class="hero-text">
-<h1>Hello, I'm <span>Shreyas</span></h1>
+
+<h1 class="typing-text">Hello I'm Shreyas</h1>
+
 <p>
-A passionate student, achiever, school council member, and technology enthusiast. This website presents my journey, achievements, family moments, spiritual visits, and memorable experiences from school and life.
+A passionate student, achiever, school council member, and technology enthusiast. This website presents my journey, achievements, creativity, leadership, futuristic UI passion, and memorable life experiences.
 </p>
+
 <div class="btns">
 <a href="#gallery" class="btn primary">Explore Gallery</a>
-<a href="#journey" class="btn secondary">My Journey</a>
+<a href="#about" class="btn secondary">About Me</a>
 </div>
-</div><div class="hero-image">
+
+</div>
+
+<div class="hero-image">
 <img src="your-photo-1.jpg" alt="Shreyas">
 </div>
-</section><section id="about">
+
+</section>
+
+<section id="about">
+
 <div class="section-title">
 <h2>About Me</h2>
 <p>Student • Leader • Achiever • Creative Thinker</p>
-</div><div class="about-grid">
+</div>
+
+<div class="about-grid">
+
 <div class="card">
 <h3>Who Am I?</h3>
 <p>
-My name is Shreyas Chaturvedi. I am 14 years old and currently studying in Class 9H at CMS Gomti Nagar 1 Campus, Lucknow. I am a dedicated student who loves learning, creativity, leadership, technology, and innovation. I enjoy participating in school activities and building creative digital ideas.
+My name is Shreyas Chaturvedi. I am a passionate student who loves technology, futuristic UI design, coding, innovation, and creative digital experiences.
 </p>
-</div><div class="card">
+</div>
+
+<div class="card">
 <h3>Achievements</h3>
 <p>
-I was awarded Student of the Year in the Junior Section at City Montessori School. I also served as the Tech Head in my school council team, where I contributed through leadership, digital creativity, teamwork, and technology-based ideas. My journey reflects hard work, discipline, confidence, and consistency.
+I received the Student of the Year award and served as Tech Head in my school council team.
 </p>
-</div><div class="card">
+</div>
+
+<div class="card">
 <h3>Interests</h3>
 <p>
-I deeply enjoy coding, web development, futuristic UI designing, technology projects, educational creativity, photography, leadership activities, and making visually beautiful digital experiences. I am always excited to learn advanced concepts and create innovative digital projects.
+Coding, leadership, photography, futuristic web design, creativity, innovation, and building visually interactive digital experiences.
 </p>
 </div>
-</div><div class="about-grid" style="margin-top:30px;">
-<div class="card">
-<h3>Quick Facts</h3>
-<p>
-• Age: 14 Years<br>
-• School: CMS Gomti Nagar 1 Campus, Lucknow<br>
-• Class & Section: 9H<br>
-• Role: Tech Head in School Council Team<br>
-• Interests: Coding, Technology, Leadership, UI Designing, Creativity, Photography & Innovation
-</p>
+
 </div>
-<div class="card">
-<h3>My Family</h3>
-<p>
-My father is Amit Chaturvedi and my mother is Priti Chaturvedi. My sister, Shraddha Chaturvedi, is also a part of CMS Education. My family has always supported and encouraged me in academics, leadership, creativity, and personal growth.
-</p>
+
+<div class="counter-box">
+
+<div class="counter">
+<h2 class="count" data-target="14">0</h2>
+<p>Age</p>
 </div>
+
+<div class="counter">
+<h2 class="count" data-target="25">0</h2>
+<p>Projects</p>
 </div>
-</section><section id="journey">
-<div class="section-title">
-<h2>My Journey</h2>
-<p>Important milestones and memorable moments</p>
-</div><div class="timeline"><div class="timeline-item">
-<div class="timeline-box">
-<h3>School Leadership</h3>
-<p>
-Being a part of the school council helped me improve leadership, teamwork, discipline, and communication skills.
-</p>
+
+<div class="counter">
+<h2 class="count" data-target="10">0</h2>
+<p>Achievements</p>
 </div>
-</div><div class="timeline-item">
-<div class="timeline-box">
-<h3>Student of the Year</h3>
-<p>
-Receiving the Student of the Year award was one of the proudest achievements of my academic life.
-</p>
+
+<div class="counter">
+<h2 class="count" data-target="5">0</h2>
+<p>Leadership Roles</p>
 </div>
-</div><div class="timeline-item">
-<div class="timeline-box">
-<h3>Divine Seminar</h3>
-<p>
-Participating in the Divine Seminar and Report Card Distribution ceremony became a memorable experience of recognition and celebration.
-</p>
+
 </div>
-</div><div class="timeline-item">
-<div class="timeline-box">
-<h3>Spiritual Visits</h3>
-<p>
-Visits to Ayodhya and Hanuman Setu Mandir gave peaceful and spiritual experiences with family.
-</p>
-</div>
-</div></div>
-</section><section id="school">
-<style>
-.gallery-item a{
-display:block;
-width:100%;
-height:100%;
-position:relative;
-z-index:2;
-text-decoration:none;
-}
-</style>
-<div class="section-title">
-<h2>School Memories</h2>
-<p>Moments from CMS and school activities</p>
-</div><div class="gallery-grid"><div class="gallery-item">
-<a href="award-photo.jpg" target="_blank"><img src="award-photo.jpg" alt="Award"></a>
-<div class="overlay">
-<h3>Student of the Year Award</h3>
-</div>
-</div><div class="gallery-item">
-<a href="divine-seminar.jpg" target="_blank"><img src="divine-seminar.jpg" alt="Seminar"></a>
-<div class="overlay">
-<h3>Divine Seminar Ceremony</h3>
-</div>
-</div><div class="gallery-item">
-<a href="council-photo.jpg" target="_blank"><img src="council-photo.jpg" alt="Council" style="object-position:right center;"></a>
-<div class="overlay">
-<h3>School Council Members</h3>
-</div>
-</div><div class="gallery-item">
-<a href="farewell-photo.jpg" target="_blank"><img src="farewell-photo.jpg" alt="Farewell"></a>
-<div class="overlay">
-<h3>School Farewell Memories</h3>
-</div>
-</div></div>
-</section><section id="fruitshow">
-<div class="section-title">
-<h2>Regional Fruit, Vegetable & Flower Show</h2>
-<p>Raj Bhawan, Lucknow</p>
-</div><div class="gallery-grid"><div class="gallery-item">
-<a href="fruit-show-1.jpg" target="_blank"><img src="fruit-show-1.jpg" alt="Fruit Show"></a>
-<div class="overlay">
-<h3>Raj Bhawan Flower Show</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-2.jpg" target="_blank"><img src="fruit-show-2.jpg" alt="Vegetable Show"></a>
-<div class="overlay">
-<h3>Regional Fruit & Vegetable Exhibition</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-3.jpg" target="_blank"><img src="fruit-show-3.jpg" alt="Flower Show"></a>
-<div class="overlay">
-<h3>Creative Floral Display</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-4.jpg" target="_blank"><img src="fruit-show-4.jpg" alt="Raj Bhawan Event"></a>
-<div class="overlay">
-<h3>Raj Bhawan Event Memories</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-5.jpg" target="_blank"><img src="fruit-show-5.jpg" alt="Lucknow Show"></a>
-<div class="overlay">
-<h3>Lucknow Exhibition Visit</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-6.jpg" target="_blank"><img src="fruit-show-6.jpg" alt="Decorative Exhibition"></a>
-<div class="overlay">
-<h3>Decorative Nature Exhibition</h3>
-</div>
-</div><div class="gallery-item">
-<a href="fruit-show-7.jpg" target="_blank"><img src="fruit-show-7.jpg" alt="Flower Festival"></a>
-<div class="overlay">
-<h3>Regional Flower Festival</h3>
-</div>
-</div></div>
-</section><section id="ayodhya">
-<div class="section-title">
-<h2>Ayodhya Memories</h2>
-<p>Beautiful family moments from Ayodhya</p>
-</div><div class="gallery-grid">
-<div class="gallery-item">
-<a href="ayodhya-family.jpg" target="_blank"><img src="ayodhya-family.jpg" alt="Ayodhya"></a>
-<div class="overlay">
-<h3>Family at Ayodhya</h3>
+
+<div class="skills">
+
+<div class="skill">
+<div class="skill-name">Coding</div>
+<div class="skill-bar">
+<div class="skill-fill" style="--width:95%"></div>
 </div>
 </div>
-</div>
-</section><section id="temple">
-<div class="section-title">
-<h2>Hanuman Setu Mandir</h2>
-<p>Spiritual and peaceful moments from Lucknow</p>
-</div><div class="gallery-grid">
-<div class="gallery-item">
-<img src="mandir-photo.jpg" alt="Mandir">
-<div class="overlay">
-<h3>Hanuman Setu Mandir</h3>
-</div>
-</div><div class="gallery-item">
-<img src="mandir-family.jpg" alt="Temple Family">
-<div class="overlay">
-<h3>Temple Visit with Family</h3>
+
+<div class="skill">
+<div class="skill-name">Leadership</div>
+<div class="skill-bar">
+<div class="skill-fill" style="--width:92%"></div>
 </div>
 </div>
+
+<div class="skill">
+<div class="skill-name">Creativity</div>
+<div class="skill-bar">
+<div class="skill-fill" style="--width:97%"></div>
 </div>
-</section><section id="gallery">
+</div>
+
+</div>
+
+<div class="badges">
+
+<div class="badge">🏆 Student of the Year</div>
+<div class="badge">💻 Tech Head</div>
+<div class="badge">🌟 Creative Thinker</div>
+<div class="badge">🚀 Future Innovator</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
 <div class="section-title">
 <h2>Photo Gallery</h2>
-<p>Collection of my favourite memories</p>
-</div><div class="gallery-grid"><div class="gallery-item">
-<a href="living-room.jpg" target="_blank"><img src="living-room.jpg" alt="Traditional Dress"></a>
-<div class="overlay">
-<h3>Traditional Look</h3>
+<p>Collection of favourite memories</p>
 </div>
-</div><div class="gallery-item">
-<img src="maze-photo.png" alt="Creative">
-<div class="overlay">
-<h3>Creative Neon Design</h3>
-</div>
-</div><div class="gallery-item">
-<img src="award2.jpg" alt="Achievement">
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+<img src="award-photo.jpg" alt="">
 <div class="overlay">
 <h3>Achievement Moment</h3>
 </div>
-</div><div class="gallery-item">
-<img src="group-photo.jpg" alt="Group">
+</div>
+
+<div class="gallery-item">
+<img src="group-photo.jpg" alt="">
 <div class="overlay">
 <h3>Friends & Team</h3>
 </div>
-</div></div>
-</section><section id="contact">
+</div>
+
+<div class="gallery-item">
+<img src="creative-photo.jpg" alt="">
+<div class="overlay">
+<h3>Creative Design</h3>
+</div>
+</div>
+
+<div class="gallery-item">
+<img src="school-photo.jpg" alt="">
+<div class="overlay">
+<h3>School Memories</h3>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
 <div class="section-title">
 <h2>Contact</h2>
-<p>Thank you for visiting my portfolio website</p>
-</div><div class="contact-box">
+<p>Thank you for visiting my portfolio</p>
+</div>
+
+<div class="card" style="text-align:center;">
 <h3>Connect With Me</h3>
+
 <p>
-This website represents my achievements, school life, spiritual journeys, leadership experiences, and memorable family moments. It is designed with a modern futuristic theme using HTML, CSS, and responsive layouts.
-<br><br>
 📧 Email: shreyas.cms.lko@gmail.com
 </p>
+
 </div>
-</section><footer>
-© 2026 Shreyas Chaturvedi Portfolio Website • CMS Gomti Nagar 1 Campus, Lucknow • Crafted with creativity, leadership, and passion for technology.
-</footer><script>
-const cards = document.querySelectorAll('.card,.gallery-item,.timeline-box');
 
-window.addEventListener('scroll',()=>{
-    const trigger = window.innerHeight * 0.85;
+</section>
 
-    cards.forEach(card=>{
-        const top = card.getBoundingClientRect().top;
+<footer style="text-align:center;padding:30px;border-top:1px solid rgba(255,255,255,0.08);color:#cbd5ff;">
+© 2026 Shreyas Portfolio Website
+</footer>
 
-        if(top < trigger){
-            card.style.opacity='1';
-            card.style.transform='translateY(0px)';
-        }
+<button class="music-btn" id="musicBtn">🎵</button>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* =========================
+MOUSE FOLLOW LIGHT
+========================= */
+
+const light = document.querySelector('.cursor-light');
+
+document.addEventListener('mousemove',(e)=>{
+
+    light.style.left = e.clientX + 'px';
+    light.style.top = e.clientY + 'px';
+
+});
+
+/* =========================
+FLOATING PARTICLES
+========================= */
+
+for(let i=0;i<60;i++){
+
+    const particle = document.createElement('div');
+
+    particle.classList.add('particle');
+
+    particle.style.left = Math.random()*100 + 'vw';
+
+    const size = Math.random()*5 + 2;
+
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    particle.style.animationDuration =
+    (Math.random()*12+8)+'s';
+
+    particle.style.animationDelay =
+    Math.random()*5+'s';
+
+    document.body.appendChild(particle);
+}
+
+/* =========================
+ANIMATED STARS
+========================= */
+
+for(let i=0;i<100;i++){
+
+    const star = document.createElement('div');
+
+    star.classList.add('star');
+
+    star.style.left = Math.random()*100+'vw';
+    star.style.top = Math.random()*100+'vh';
+
+    star.style.animationDuration =
+    (Math.random()*3+1)+'s';
+
+    document.body.appendChild(star);
+}
+
+/* =========================
+3D TILT EFFECT
+========================= */
+
+const tiltCards =
+document.querySelectorAll('.card,.gallery-item');
+
+tiltCards.forEach(card=>{
+
+    card.addEventListener('mousemove',(e)=>{
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateY = ((x / rect.width)-0.5)*20;
+        const rotateX = ((y / rect.height)-0.5)*-20;
+
+        card.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+
     });
+
+    card.addEventListener('mouseleave',()=>{
+
+        card.style.transform =
+        'rotateX(0) rotateY(0) scale(1)';
+
+    });
+
 });
 
-cards.forEach(card=>{
-    card.style.opacity='0';
-    card.style.transform='translateY(60px)';
-    card.style.transition='0.8s';
+/* =========================
+COUNTER ANIMATION
+========================= */
+
+const counters = document.querySelectorAll('.count');
+
+counters.forEach(counter=>{
+
+    const updateCounter = ()=>{
+
+        const target = +counter.getAttribute('data-target');
+
+        const count = +counter.innerText;
+
+        const increment = target / 80;
+
+        if(count < target){
+
+            counter.innerText =
+            Math.ceil(count + increment);
+
+            setTimeout(updateCounter,25);
+
+        }else{
+
+            counter.innerText = target;
+
+        }
+
+    };
+
+    updateCounter();
+
 });
-</script></body>
+
+/* =========================
+BACKGROUND MUSIC
+========================= */
+
+const music =
+document.getElementById('bgMusic');
+
+const musicBtn =
+document.getElementById('musicBtn');
+
+let playing = false;
+
+musicBtn.addEventListener('click',()=>{
+
+    if(!playing){
+
+        music.play();
+        musicBtn.innerHTML='⏸';
+
+    }else{
+
+        music.pause();
+        musicBtn.innerHTML='🎵';
+
+    }
+
+    playing = !playing;
+
+});
+
+</script>
+
+</body>
 </html>
